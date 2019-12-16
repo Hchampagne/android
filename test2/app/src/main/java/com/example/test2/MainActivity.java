@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private Button mAction;
     private Button mReset;
     private Button mValide;
+    private boolean test_prenom = false;
+    private boolean test_nom = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +35,13 @@ public class MainActivity extends AppCompatActivity {
         mReset = (Button) findViewById(R.id.reset);
         mValide = (Button) findViewById(R.id.valide);
 
+
+        // désative les boutons aux démarrage
         mAction.setEnabled(false);
         mReset.setEnabled(false);
         mValide.setEnabled(false);
-        //mtextView.setText("");
 
+        //gestion champs prenom
         mPrenom.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -46,7 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mValide.setEnabled(s.toString().length() != 0);
+
+                test_prenom = s.toString().length() > 1 ;
+                mValide.setEnabled(test_prenom && test_nom);
             }
 
             @Override
@@ -55,6 +61,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //gestion champs nom
+        mNom.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                test_nom = s.toString().length() > 1 ;
+                mValide.setEnabled(test_prenom && test_nom);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        }) ;
+
         mValide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,10 +87,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
         mAction.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                //just clic
+
                 mtextView.setTextColor(Color.RED);
                 mtextView.setText("Bonjour : "+ mNom.getText() + "  " + mPrenom.getText());
                 mAction.setEnabled(false);
@@ -76,9 +103,11 @@ public class MainActivity extends AppCompatActivity {
         mReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mPrenom.setText("");
                 mNom.setText("");
                 mtextView.setText("");
+                mValide.setEnabled(false);
                 mAction.setEnabled(false);
                 mReset.setEnabled(false);
             }
