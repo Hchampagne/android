@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#86709B94"
+    android:background="#8647504F"
     tools:context=".MainActivity">
 
     <EditText
@@ -14,12 +14,12 @@
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="70dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/nom"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/main_prenom"
@@ -28,12 +28,12 @@
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="40dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/pr_nom"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_nom"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/main_nom" />
 
     <EditText
         android:id="@+id/main_age"
@@ -42,12 +42,12 @@
         android:layout_marginStart="40dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="40dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/age"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_prenom"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/main_prenom" />
 
     <RadioGroup
         android:id="@+id/main_group"
@@ -63,13 +63,14 @@
             android:id="@+id/main_femme"
             android:layout_width="154dp"
             android:layout_height="wrap_content"
-            android:checked="true"
+            android:onClick="onRadioButtonClicked"
             android:text="@string/femme" />
 
         <RadioButton
             android:id="@+id/main_homme"
             android:layout_width="154dp"
             android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
             android:text="@string/homme" />
     </RadioGroup>
 
@@ -81,6 +82,7 @@
         android:layout_marginLeft="150dp"
         android:layout_marginTop="96dp"
         android:background="#E6887D7D"
+        android:onClick="onValider"
         android:text="@string/valider"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
