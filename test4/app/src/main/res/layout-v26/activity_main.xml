@@ -16,7 +16,7 @@
         android:layout_marginTop="70dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/nom"
+        android:hint="nom"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,7 +30,7 @@
         android:layout_marginTop="40dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/pr_nom"
+        android:hint="pr_nom"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_nom" />
@@ -44,7 +44,7 @@
         android:layout_marginTop="40dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/age"
+        android:hint="age"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_prenom" />
@@ -64,14 +64,14 @@
             android:layout_width="154dp"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
-            android:text="@string/femme" />
+            android:text="femme" />
 
         <RadioButton
             android:id="@+id/main_homme"
             android:layout_width="154dp"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
-            android:text="@string/homme" />
+            android:text="homme" />
     </RadioGroup>
 
     <Button
@@ -83,8 +83,8 @@
         android:layout_marginTop="96dp"
         android:background="#E6887D7D"
         android:onClick="onValider"
-        android:text="@string/valider"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="valider"
+        android:textAppearance="TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
