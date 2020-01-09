@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -21,11 +22,14 @@ public class MainActivity extends AppCompatActivity {
     private TextView affMess;
 
     private Button btn1M;
+    private Button btn1P;
+    private Button btn2M;
+    private Button btn2P;
 
     private int dPoids;
     private int dTaille;
-    private int progress;
-    private double resultat ;
+
+    private double result ;
     private String mess;
 
 
@@ -43,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
         affMess = findViewById(R.id.afficheResult);
 
         btn1M = findViewById(R.id.btn1Moins);
+        btn1P = findViewById(R.id.btn1Plus);
+        btn2M = findViewById(R.id.btn2Moins);
+        btn2P = findViewById(R.id.btn2Plus);
+
+        affPoids.setText("0" + " kg");
+        affTaille.setText("50" + " cm");
 
 
         poids.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -88,46 +98,64 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btn1M.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                int a = poids.getProgress();
+                a -= 1;
+                if (a > 200) a = 200;
+                poids.setProgress(a);
+            }
+        });
 
+        btn1P.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                int b = poids.getProgress();
+                b += 1;
+                if (b > 200) b = 200;
+                poids.setProgress(b);
+            }
+        });
 
+        btn2M.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                int a = taille.getProgress();
+                a -= 1;
+                if (a > 200) a = 200;
+                taille.setProgress(a);
+            }
+        });
+
+        btn2P.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                int b = taille.getProgress();
+                b += 1;
+                if (b > 200) b = 200;
+                taille.setProgress(b);
+            }
+        });
 
 
     }
-        public void decProgress(){
-
-            progress = poids.getProgress();
-            progress -= 1;
-
-            if (progress < 0) {
-                progress = 0;
-            }
-            poids.setProgress(progress);
-
-        }
-
-
-
-
 
     public void calculImc(){
 
-        double resultat = (double)dPoids / Math.pow((double)dTaille, 2.0)*10000 ;
+        double result = (double)dPoids / Math.pow((double)dTaille, 2.0)*10000 ;
 
         DecimalFormat f = new DecimalFormat("#.###");
-        String imc =  f.format(resultat);
+        String imc =  f.format(result);
 
-        //String essai = Integer.toString(dPoids);
+        //String essay = Integer.toString(dPoids);
         affImc.setTextSize(25);
         affImc.setText(imc);
 
         // message
-        if ( resultat < 1){ mess = "" ;}
-        else if (resultat < 16.5){mess = " Dénutrition ou anorexie";}
-        else if ( resultat < 18.5){ mess = " Maigreur" ;}
-        else if ( resultat < 25){ mess = "Poids normal" ;}
-        else if ( resultat  <30){ mess = "Surpoids" ;}
-        else if ( resultat  < 35){ mess = "Obesité modérée" ;}
-        else if ( resultat  < 40){ mess = "Obésité sévère" ;}
+        if ( result < 1){ mess = "" ;}
+        else if (result < 16.5){mess = " Dénutrition ou anorexie";}
+        else if ( result < 18.5){ mess = " Maigreur" ;}
+        else if ( result < 25){ mess = "Poids normal" ;}
+        else if ( result  <30){ mess = "Surpoids" ;}
+        else if ( result  < 35){ mess = "Obesité modérée" ;}
+        else if ( result  < 40){ mess = "Obésité sévère" ;}
         else{ mess = "Obésité morbide ou massive";}
 
         affMess.setTextSize(25);
