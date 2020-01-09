@@ -2,10 +2,43 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/btn2Moins"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
-    android:onClick="calculImc"
     tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn2Moins"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#F44336"
+        android:text="-"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/seekBarTaille"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etiquette_taille" />
+
+    <Button
+        android:id="@+id/btn1Moins"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#8BC34A"
+        android:text="-"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/seekBarPoids"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etiquette_poids" />
 
     <TextView
         android:id="@+id/affiche_imc"
@@ -15,36 +48,39 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="120dp"
         android:text="000"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/etiquetteIMC"
         app:layout_constraintTop_toBottomOf="@+id/seekBarTaille" />
 
     <SeekBar
         android:id="@+id/seekBarTaille"
         style="@android:style/Widget.SeekBar"
-        android:layout_width="370dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:max="200"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn2Plus"
+        app:layout_constraintStart_toEndOf="@+id/btn2Moins"
         app:layout_constraintTop_toBottomOf="@+id/etiquette_taille" />
 
     <SeekBar
         android:id="@+id/seekBarPoids"
         style="@android:style/Widget.SeekBar"
-        android:layout_width="370dp"
-        android:layout_height="15dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_width="300dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:max="200"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etiquette_poids" />
+        app:layout_constraintEnd_toStartOf="@+id/btn1Plus"
+        app:layout_constraintStart_toEndOf="@+id/btn1Moins"
+        app:layout_constraintTop_toBottomOf="@+id/affiche_poids" />
 
     <TextView
         android:id="@+id/etiquette_poids"
@@ -84,8 +120,8 @@
         android:id="@+id/affiche_taille"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="48dp"
         android:text="50"
         app:layout_constraintStart_toEndOf="@+id/etiquette_taille"
@@ -99,18 +135,51 @@
         android:layout_marginLeft="150dp"
         android:layout_marginTop="120dp"
         android:text="IMC"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBarTaille" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="300dp"
+    <TextView
+        android:id="@+id/afficheResult"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="101dp"
+        android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/affiche_imc" />
+
+    <Button
+        android:id="@+id/btn1Plus"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="89dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#8BC34A"
+        android:text="+"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/seekBarPoids"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn2Plus"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="89dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#F44336"
+        android:text="+"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/seekBarTaille"
+        app:layout_constraintTop_toBottomOf="@+id/btn1Plus" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
